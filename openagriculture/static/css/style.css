@@ -1,0 +1,46 @@
+:root{
+
+   --primary_green: #8ac08c;
+}
+
+.field-icon{
+   filter: brightness(0) saturate(100%) invert(89%) sepia(5%) saturate(2233%) hue-rotate(68deg) brightness(80%) contrast(90%);
+   max-width: 100px;
+}
+
+.animate-pop {
+  animation-duration: .5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48) steps(1000, end);
+}
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.btn-success{
+   background-color: var(--primary_green);
+   border-color: white;
+}
+
+.hr-title{
+
+   width : 400px;
+   height:4px !important;
+   color: var(color-secondary);
+}
+
+#create-field-map-div{
+
+   border-color: var(--primary_green) !important;
+   border : 2px solid;
+   height: 500px;
+}

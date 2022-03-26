@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+   <title>Fields | Open Agriculture</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+
+
+
+   <!-- FIELDS -->
+   <div class="row my-3">
+      <div class="col-md-3">
+         <h3><i class="bi bi-geo-fill mx-2"></i>Fields</h3>
+         <hr style="width : 150px; height:3px;">
+      </div>
+   </div>
+   <div class="row">
+      {% for field in fields %}
+         <div class="col-sm-6 col-md-4 col-xl-3 animate-pop">
+            <div class="card border-1 mb-3" style="border-radius:15; max-width: 540px;">
+              <div class="row g-0 d-flex flex-wrap align-items-center">
+                <div class="col-sm-6 col-md-4">
+                   {% if field.crop.lower() == 'barley' %}
+                     <img src="/static/img/barley.svg" class="field-icon" alt="">
+                   {% endif %}
+                   {% if field.crop.lower() == 'mais' %}
+                     <img src="/static/img/corn.svg" class="field-icon" alt="">
+                   {% endif %}
+                   {% if field.crop.lower() == 'soybean' %}
+                     <img src="/static/img/soybean.svg" class="field-icon" alt="">
+                   {% endif %}
+                </div>
+                <div class="col-sm-6 col-md-8">
+                   <div class="card-body">
+                    <h5 class="card-title">{{ field.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ field.crop }}</h6>
+                    <p class="card-text">Area : {{ field.area }} Ha</p>
+                    <a href="#" class="btn btn-success">Go to field</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+      {% endfor %}
+   </div>
+
+
+</div>
+{% endblock %}
