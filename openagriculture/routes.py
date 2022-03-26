@@ -4,18 +4,54 @@ from openagriculture.forms import CreateFieldForm
 from flask import render_template, redirect, url_for, flash
 
 import numpy as np
+import json
 
 @app.route('/')
 @app.route('/home')
 @app.route('/dashboard')
 def home_page():
     fields = Field.query.all()
-    return render_template('home.html', fields=fields)
+
+    fields_dataset = []
+
+    minlat = 1000
+    minlon = 1000
+    maxlat = -1000
+    maxlon = -1000
+
+    for field in fields:
+
+        lat = [float(l) for l in field.geometry.split(',')[::2]]
+        lon = [float(l) for l in field.geometry.split(',')[1::2]]
+
+        current_minlat, current_maxlat = min(lat), max(lat)
+        current_minlon, current_maxlon = min(lon), max(lon)
+
+        if current_minlat < minlat : minlat = current_minlat
+        if current_maxlat > maxlat : maxlat = current_maxlat
+        if current_minlon < minlon : minlon = current_minlon
+        if current_maxlon > maxlon : maxlon = current_maxlon
+
+        _f = {}
+        _f['name'] = field.name
+        _f['crop'] = field.crop
+        _f['area'] = field.area
+
+        _f['geometry'] = [(float(lat),float(lon)) for lat,lon in zip(field.geometry.split(',')[::2],field.geometry.split(',')[1::2])]
+
+
+        fields_dataset.append(_f)
+
+
+    map_center = ((maxlat+minlat)/2, (maxlon+minlon)/2)
+
+    return render_template('home.html', fields=fields, fields_dataset=json.dumps(fields_dataset), map_center=map_center)
 
 
 @app.route('/fields')
 def fields_page():
     fields = Field.query.all()
+
     return render_template('fields.html', fields=fields)
 
 @app.route('/create-field', methods=["POST", "GET"])
@@ -26,6 +62,8 @@ def create_field_page():
 
         lat = [float(l) for l in form.geometry.data.split(',')[::2]]
         lon = [float(l) for l in form.geometry.data.split(',')[1::2]]
+
+
 
         def PolyArea(x,y):
             return 0.5*np.abs(np.dot(x,np.roll(y,1))-np.dot(y,np.roll(x,1)))
