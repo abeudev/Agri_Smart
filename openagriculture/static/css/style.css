@@ -1,15 +1,22 @@
+html{
+   margin : 0;
+   padding : 0;
+}
+
 :root{
 
-   --primary_green: #8ac08c;
+   --primary_green: #CCD5AE;
+   --secondary_green: #718355;
+   --primary_brown: #6c584c;
 }
 
 .field-icon{
-   filter: brightness(0) saturate(100%) invert(89%) sepia(5%) saturate(2233%) hue-rotate(68deg) brightness(80%) contrast(90%);
+   filter: invert(100%) sepia(7%) saturate(5725%) hue-rotate(29deg) brightness(88%) contrast(83%);
    max-width: 100px;
 }
 
 .animate-pop {
-  animation-duration: .5s;
+  animation-duration: 1.5s;
   animation-name: animate-pop;
   animation-timing-function: cubic-bezier(.26, .53, .74, 1.48) steps(1000, end);
 }
@@ -30,12 +37,12 @@
   padding: 5px;
   border: 0px;
   border-radius : 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.12), 0 2px 10px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 5px 5px rgba(0,0,0,0.24);
+  transition: all 1s cubic-bezier(.25,.8,.25,1);
 }
 
 .card:hover {
-  box-shadow: 0 14px 30px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25), 0 14px 30px rgba(0,0,0,0.22);
 }
 
 .btn-success{
@@ -43,11 +50,16 @@
    border-color: white;
 }
 
+.btn-success:hover{
+   background-color: var(--secondary_green);
+}
+
 .hr-title{
 
    width : 400px;
    height:4px !important;
-   color: var(color-secondary);
+   color: var(--secondary_green);
+
 }
 
 #create-field-map-div{
@@ -60,7 +72,21 @@
 #fields-map-div{
 
    border-color: var(--primary_green) !important;
-   border : 2px solid;
+   border : 5px solid;
    height: 500px;
-   
+   border-radius: 20px;
+
+}
+
+.navbar-custom{
+   background-color: var(--primary_brown);
+}
+
+
+body{
+   background-color: #f2f2f2;
+}
+
+footer{
+   background-color: var(--primary_brown);
 }

@@ -1,6 +1,6 @@
 from openagriculture import app, db
 from openagriculture.models import Field
-from openagriculture.forms import CreateFieldForm
+from openagriculture.forms import CreateFieldForm, DeleteFieldForm
 from flask import render_template, redirect, url_for, flash
 
 import numpy as np
@@ -63,8 +63,6 @@ def create_field_page():
         lat = [float(l) for l in form.geometry.data.split(',')[::2]]
         lon = [float(l) for l in form.geometry.data.split(',')[1::2]]
 
-
-
         def PolyArea(x,y):
             return 0.5*np.abs(np.dot(x,np.roll(y,1))-np.dot(y,np.roll(x,1)))
 
@@ -81,3 +79,35 @@ def create_field_page():
             flash(f'There was an error while creating new field: {err_msg}', category='danger')
 
     return render_template('create_field.html', form=form)
+
+@app.route('/delete-field', methods=["POST","GET"])
+def delete_field_page():
+
+    form = DeleteFieldForm()
+
+    form.field.choices = [(g.name,g.name) for g in Field.query.all()]
+
+    # Retrieve fields entries from Database
+    fields = Field.query.all()
+
+    if form.validate_on_submit():
+
+        field_to_delete = Field.query.filter_by(name=form.field.data).first()
+        db.session.delete(field_to_delete)
+        db.session.commit()
+
+        return redirect(url_for('home_page'))
+
+    if form.errors != {}: #If there are not errors from the validations
+        for err_msg in form.errors.values():
+            flash(f'There was an error while creating new field: {err_msg}', category='danger')
+
+
+
+    return render_template('delete_field.html', form=form, fields=fields)
+
+
+@app.route('/<string:name>')
+def field_details_page(name):    
+    field = Field.query.filter_by(name=name).first()
+    return render_template('field_details.html', field=field)

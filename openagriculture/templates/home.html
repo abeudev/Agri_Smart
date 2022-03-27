@@ -51,7 +51,7 @@
                     <h5 class="card-title">{{ field.name }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ field.crop }}</h6>
                     <p class="card-text">Area : {{ field.area }} Ha</p>
-                    <a href="#" class="btn btn-success">Go to field</a>
+                    <a href="{{ url_for('field_details_page', name=field.name) }}" class="btn btn-success">Go to field</a>
                   </div>
                 </div>
               </div>
