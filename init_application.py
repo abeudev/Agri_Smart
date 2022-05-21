@@ -16,7 +16,7 @@ def create_fields_table(connection):
 
     sql_cmd = """
         CREATE TABLE IF NOT EXISTS field(
-            id   integer PRIMARY KEY,
+            field_id   integer PRIMARY KEY,
             name text NOT NULL,
             geometry text NOT NULL,
             crop text NOT NULL,
@@ -29,6 +29,21 @@ def create_fields_table(connection):
     except sqlite3.Error as e:
         print(e)
 
+def create_global_satellite_images_table(connection):
+
+    sql_cmd = """
+        CREATE TABLE IF NOT EXISTS satellite_image(
+            satellite_image_id   integer PRIMARY KEY,
+            product_id text NOT NULL,
+            product_name text NOT NULL,
+            date text NOT NULL
+        ); """
+
+    try:
+        cursor = connection.cursor()
+        cursor.execute(sql_cmd)
+    except sqlite3.Error as e:
+        print(e)
 
 def install():
 
@@ -37,6 +52,7 @@ def install():
     if connection is not None:
 
         create_fields_table(connection)
+        create_global_satellite_images_table(connection)
     else:
         print("Error! cannot create the database connection.")
 

@@ -5,9 +5,11 @@ html{
 
 :root{
 
-   --primary_green: #CCD5AE;
+   --primary_green: #B6AA3C;
    --secondary_green: #718355;
    --primary_brown: #6c584c;
+   --secondary_brown: #dba55a;
+   --color-bg: #f2f2f2;
 }
 
 .field-icon{
@@ -50,7 +52,17 @@ html{
    border-color: white;
 }
 
+.btn-secondary{
+   background-color: var(--primary_brown);
+   border-color: white;
+}
+
+.btn-secondary:hover{
+   background-color: var(--secondary_brown);
+}
+
 .btn-success:hover{
+
    background-color: var(--secondary_green);
 }
 
@@ -69,12 +81,22 @@ html{
    height: 500px;
 }
 
+#field-map-div{
+
+   border-color: var(--primary_green) !important;
+   border : 2px solid;
+   height: 600px;
+
+}
+
 #fields-map-div{
 
    border-color: var(--primary_green) !important;
    border : 5px solid;
    height: 500px;
    border-radius: 20px;
+   box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 5px 5px rgba(0,0,0,0.24);
+   transition: all 1s cubic-bezier(.25,.8,.25,1);
 
 }
 
@@ -84,9 +106,80 @@ html{
 
 
 body{
-   background-color: #f2f2f2;
+   background-color: var(--color-bg);
 }
 
 footer{
    background-color: var(--primary_brown);
+}
+
+
+/*
+   -----------------------------------------------------------------------------
+   Login Page
+   -----------------------------------------------------------------------------
+*/
+
+
+
+.login-cntr{
+
+   padding: 20px;
+   margin:auto;
+   /* margin-top: 10vh; */
+   background: white;
+   border-radius: 10px;
+   transition: all 1s cubic-bezier(.25,.8,.25,1);
+   box-shadow: 0 5px 5px rgba(0,0,0,0.06), 0 5px 5px rgba(0,0,0,0.024);
+}
+
+.login-cntr img{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+}
+
+
+/*
+   -----------------------------------------------------------------------------
+   Edit User details
+   -----------------------------------------------------------------------------
+*/
+
+.user-details{
+
+   background: white;
+   border-radius: 10px;
+   transition: all 1s cubic-bezier(.25,.8,.25,1);
+   box-shadow: 0 5px 5px rgba(0,0,0,0.06), 0 5px 5px rgba(0,0,0,0.024);
+
+}
+
+.user-detail-field{
+   background: var(--color-bg);
+   border-radius: 5px;
+   padding: 5px;
+}
+
+/*
+   -----------------------------------------------------------------------------
+   Edit User details
+   -----------------------------------------------------------------------------
+*/
+
+.navdate
+{
+   color: var(--primary_brown);
+   text-decoration: none;
+}
+
+.navdate-disabled, .navdate-disabled:hover
+{
+   color: grey;
+   text-decoration: none;
+}
+
+.navdate:hover
+{
+   color: var(--secondary_brown);
 }

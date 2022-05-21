@@ -1,40 +1,49 @@
 // Declaring the map
 var map = L.map('fields-map-div');
+map.setView([45.1544, 10.7896], 13);
 
 // Tileset
-// L.tileLayer('https://a.tile.openstreetmap.de/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Open Agriculture'
-// }).addTo(map);
-//
-// map.options.minZoom = 12;
-// map.options.maxZoom = 16;
+L.tileLayer('https://a.tile.openstreetmap.de/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Open Agriculture'
+}).addTo(map);
+
+map.options.minZoom = 13;
+map.options.maxZoom = 16;
 
 var popup = L.popup();
 var create_field_is_clicked = false
 var polygon_field;
 
-map.setView(map_center, 11);
-
+// Center of fields
+console.log(map_center);
+if(map_center[0] != 1000)
+{
+   map.fitBounds([[map_center[0],map_center[1]],[map_center[2],map_center[3]]]);
+}
 
 for (var i = 0; i < fields_dataset.length; i++)
 {
-   console.log(fields_dataset[i].geometry)
+
    polygon_field = L.polygon(fields_dataset[i].geometry);
 
    if(fields_dataset[i].crop == 'mais')
    {
       polygon_field.setStyle({fillColor: '#436953', fillOpacity:0.4, color:'#436953'});
+      polygon_field.bindPopup("<h4><img src=\"/static/img/corn.svg\" height=\"25px;\" class=\"mx-1\">"+fields_dataset[i].name+"</h4><hr><h6>Crop : "+fields_dataset[i].crop+"</h6><h6>Surface : "+fields_dataset[i].area+" Ha</h6>");
+
    }
    if(fields_dataset[i].crop == 'soybean')
    {
       polygon_field.setStyle({fillColor: '#65b7c7', fillOpacity:0.4, color:'#65b7c7'});
+      polygon_field.bindPopup("<h4><img src=\"/static/img/barley.svg\" height=\"25px;\" class=\"mx-1\">"+fields_dataset[i].name+"</h4><hr><h6>Crop : "+fields_dataset[i].crop+"</h6><h6>Surface : "+fields_dataset[i].area+" Ha</h6>");
+
    }
    if(fields_dataset[i].crop == 'barley')
    {
       polygon_field.setStyle({fillColor: '#e8d282', fillOpacity:0.4, color:'#e8d282'});
+      polygon_field.bindPopup("<h4><img src=\"/static/img/soybean.svg\" height=\"25px;\" class=\"mx-1\">"+fields_dataset[i].name+"</h4><hr><h6>Crop : "+fields_dataset[i].crop+"</h6><h6>Surface : "+fields_dataset[i].area+" Ha</h6>");
    }
 
-   polygon_field.bindPopup("<h4>"+fields_dataset[i].name+"</h4><hr><h6>Crop : "+fields_dataset[i].crop+"</h6><h6>Surface : "+fields_dataset[i].area+" Ha</h6>");
    polygon_field.addTo(map);
 }
 
