@@ -17,7 +17,6 @@
 Agriculture is an open-source decision-support system for precision farming.
 This application is thought to be self-hosted using a low-power SBC (e.g., Raspberry Pi 3, Pine A64) and accessed within a local network.
 
-<img width="720" src="docs/dashboard.png">
 
 ## Remote Sensing  :satellite:
 
