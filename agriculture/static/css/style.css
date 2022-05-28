@@ -1,0 +1,189 @@
+html{
+   margin : 0;
+   padding : 0;
+}
+
+:root{
+
+   /* --primary_green: #B6AA3C; */
+   --primary_green:#087d6be3;
+   --secondary_green: #718355;
+   --primary_brown: #004802;
+   /* --primary_brown: #6c584c; */
+   /* #  177203*/
+   /* #002d77 */
+   --secondary_brown: #dba55a;
+   --color-bg: #f2f2f2;
+}
+
+.field-icon{
+   filter: invert(100%) sepia(7%) saturate(5725%) hue-rotate(29deg) brightness(88%) contrast(83%);
+   max-width: 100px;
+}
+
+.animate-pop {
+  animation-duration: 1.5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48) steps(1000, end);
+}
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.card {
+  padding: 5px;
+  border: 0px;
+  border-radius : 20px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 5px 5px rgba(0,0,0,0.24);
+  transition: all 1s cubic-bezier(.25,.8,.25,1);
+}
+
+.card:hover {
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25), 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.btn-success{
+   background-color: var(--primary_green);
+   border-color: white;
+}
+
+.btn-secondary{
+   background-color: var(--primary_brown);
+   border-color: white;
+}
+
+.btn-secondary:hover{
+   background-color: var(--secondary_brown);
+}
+
+.btn-success:hover{
+
+   background-color: var(--secondary_green);
+}
+
+.hr-title{
+
+   width : 400px;
+   height:4px !important;
+   color: var(--secondary_green);
+
+}
+
+#create-field-map-div{
+
+   border-color: var(--primary_green) !important;
+   border : 2px solid;
+   height: 500px;
+}
+
+#field-map-div{
+
+   border-color: var(--primary_green) !important;
+   border : 2px solid;
+   height: 600px;
+
+}
+
+#fields-map-div{
+
+   border-color: var(--primary_green) !important;
+   border : 5px solid;
+   height: 500px;
+   border-radius: 20px;
+   box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 5px 5px rgba(0,0,0,0.24);
+   transition: all 1s cubic-bezier(.25,.8,.25,1);
+
+}
+
+.navbar-custom{
+   background-color: var(--primary_brown);
+}
+
+
+body{
+   background-color: var(--color-bg);
+}
+
+footer{
+   background-color: var(--primary_brown);
+}
+
+
+/*
+   -----------------------------------------------------------------------------
+   Login Page
+   -----------------------------------------------------------------------------
+*/
+
+
+
+.login-cntr{
+
+   padding: 20px;
+   margin:auto;
+   /* margin-top: 10vh; */
+   background: white;
+   border-radius: 10px;
+   transition: all 1s cubic-bezier(.25,.8,.25,1);
+   box-shadow: 0 5px 5px rgba(0,0,0,0.06), 0 5px 5px rgba(0,0,0,0.024);
+}
+
+.login-cntr img{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+}
+
+
+/*
+   -----------------------------------------------------------------------------
+   Edit User details
+   -----------------------------------------------------------------------------
+*/
+
+.user-details{
+
+   background: white;
+   border-radius: 10px;
+   transition: all 1s cubic-bezier(.25,.8,.25,1);
+   box-shadow: 0 5px 5px rgba(0,0,0,0.06), 0 5px 5px rgba(0,0,0,0.024);
+
+}
+
+.user-detail-field{
+   background: var(--color-bg);
+   border-radius: 5px;
+   padding: 5px;
+}
+
+/*
+   -----------------------------------------------------------------------------
+   Edit User details
+   -----------------------------------------------------------------------------
+*/
+
+.navdate
+{
+   color: var(--primary_brown);
+   text-decoration: none;
+}
+
+.navdate-disabled, .navdate-disabled:hover
+{
+   color: grey;
+   text-decoration: none;
+}
+
+.navdate:hover
+{
+   color: var(--secondary_brown);
+}

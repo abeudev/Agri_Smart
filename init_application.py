@@ -47,7 +47,7 @@ def create_global_satellite_images_table(connection):
 
 def install():
 
-    connection = create_connection('openagriculture/openagriculture.db')
+    connection = create_connection('agriculture/agriculture.db')
 
     if connection is not None:
 

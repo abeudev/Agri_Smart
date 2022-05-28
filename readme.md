@@ -1,6 +1,6 @@
 <img width="500" src="docs/logo_wide">
 
-# Open Agriculture 
+# Agriculture 
 
 :warning: :construction: This project is still under development.
 
@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Open Agriculture is an open-source decision-support system for precision farming.
+Agriculture is an open-source decision-support system for precision farming.
 This application is thought to be self-hosted using a low-power SBC (e.g., Raspberry Pi 3, Pine A64) and accessed within a local network.
 
 <img width="720" src="docs/dashboard.png">
@@ -22,7 +22,7 @@ This application is thought to be self-hosted using a low-power SBC (e.g., Raspb
 ## Remote Sensing  :satellite:
 
 Modern precision farming makes heavy use of satellite imagery in order to extract meaningful information on crops and monitor their status. Within the available satellite, the ESA (European Space Agency) Sentinel-2 mission is particularly suitable for monitoring land surface variations at a spatial scale compatible with precision farming (from 10 m to 30 m depending on the band).
-Open Agriculture uses Sentinel-2 images and processes them in order to provide vegetation indexes maps clipped over user field footprints.
+Agriculture uses Sentinel-2 images and processes them in order to provide vegetation indexes maps clipped over user field footprints.
 
 <img width="720" src="docs/field_details.png">
 
