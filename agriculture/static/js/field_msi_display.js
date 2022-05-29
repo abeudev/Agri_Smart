@@ -56,7 +56,7 @@ function circle (location, radius) {
 var map = L.map('field-map-div');
 
 L.tileLayer('https://a.tile.openstreetmap.de/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Agriculture'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Agri smart'
 }).addTo(map);
 
 // L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{

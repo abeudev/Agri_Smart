@@ -7,43 +7,43 @@ from wtforms.widgets import HiddenInput
 
 class RegisterForm(FlaskForm):
 
-    username      = StringField(label='User Name:', validators=[Length(min=2,max=30), DataRequired()])
-    email_address = StringField(label='Email Address:', validators=[Email(), DataRequired()])
-    password1     = PasswordField(label='Password:', validators=[Length(min=6), DataRequired()])
-    password2     = PasswordField(label='Confirm Password:', validators=[EqualTo('password1'), DataRequired()])
-    submit        = SubmitField(label='Create Account')
+    username      = StringField(label="Nom d'utilisateur:", validators=[Length(min=2,max=30), DataRequired()])
+    email_address = StringField(label='Adresse:', validators=[Email(), DataRequired()])
+    password1     = PasswordField(label='Mot de passe:', validators=[Length(min=6), DataRequired()])
+    password2     = PasswordField(label='Confirmer Mot de passe:', validators=[EqualTo('password1'), DataRequired()])
+    submit        = SubmitField(label='Créer le compte')
 
 ################################################################################
 
 class LoginForm(FlaskForm):
-    username = StringField(label="User Name: ", validators=[DataRequired()])
-    password = PasswordField(label='Password:', validators=[DataRequired()])
-    submit   = SubmitField(label='Sign in')
+    username = StringField(label="Nom utilisateur: ", validators=[DataRequired()])
+    password = PasswordField(label='Mot de passe:', validators=[DataRequired()])
+    submit   = SubmitField(label='Connecter')
 
 ################################################################################
 
 class EditUserDetailsForm(FlaskForm):
 
-    company_name    = StringField(label="Company Name", validators=[DataRequired()])
-    farm_address    = StringField(label="Farm Address", validators=[DataRequired()])
-    fiscal_code     = StringField(label="Fiscal Code", validators=[DataRequired()])
-    submit          = SubmitField(label='Submit')
+    company_name    = StringField(label="Entreprise", validators=[DataRequired()])
+    farm_address    = StringField(label="Adresse", validators=[DataRequired()])
+    fiscal_code     = StringField(label="Code identification", validators=[DataRequired()])
+    submit          = SubmitField(label='Enregistrer')
 
 ################################################################################
 
 class CreateFieldForm(FlaskForm):
 
-    name     = StringField(label='Field Name :', validators=[Length(min=4,max=25),DataRequired()])
-    crop     = SelectField('Crop name :', choices=[('mais', 'Mais'), ('barley', 'Barley'), ('soybean', 'Soybean')], validators=[DataRequired()])
-    geometry = HiddenField(label='Geometry :', validators=[Length(min=4, message="Define field geometry")])
-    submit   = SubmitField(label='Save Field')
+    name     = StringField(label='Intitulé champs :', validators=[Length(min=4,max=25),DataRequired()])
+    crop     = SelectField('Intitulé plantation :', choices=[('mais', 'Mais'), ('barley', 'Barley'), ('soybean', 'Soybean')], validators=[DataRequired()])
+    geometry = HiddenField(label='Geometrie :', validators=[Length(min=4, message="Définir parcelle")])
+    submit   = SubmitField(label='Enregistrer parcelle')
 
 ################################################################################
 
 class DeleteFieldForm(FlaskForm):
 
-    field              = SelectField(label='Field To Delete Name', validators=[DataRequired()])
-    confirm_field_name = StringField(label='Confirm Name', validators=[DataRequired(), EqualTo('field')])
-    submit             = SubmitField(label="Delete Field")
+    field              = SelectField(label='Nom du champ', validators=[DataRequired()])
+    confirm_field_name = StringField(label='Confirmer le nom', validators=[DataRequired(), EqualTo('field')])
+    submit             = SubmitField(label="Supprimer le champ")
 
 ################################################################################

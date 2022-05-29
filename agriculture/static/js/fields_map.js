@@ -65,18 +65,18 @@ for (var i = 0; i < fields_dataset.length; i++)
 // {
 //    var element = document.getElementById("create_field_btn");
 //
-//    if( element.textContent == "Define Field")
+//    if( element.textContent == "Définir parcelle")
 //    {
 //       element.classList.remove("btn-success");
 //       element.classList.add("btn-danger");
-//       element.textContent="Save Field";
+//       element.textContent="Enregistrer parcelle";
 //       create_field_is_clicked = true;
 //    }
 //    else
 //    {
 //          element.classList.remove("btn-danger");
 //          element.classList.add("btn-success");
-//          element.textContent="Define Field";
+//          element.textContent="Définir parcelle";
 //          create_field_is_clicked = false;
 //
 //          geometry_string = ''

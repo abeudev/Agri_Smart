@@ -92,7 +92,6 @@ crop_recommendation_model = pickle.load(
 
 # Custom functions for calculations
 
-
 def weather_fetch(city_name):
     """
     Fetch and returns the temperature and humidity of a city
@@ -102,11 +101,14 @@ def weather_fetch(city_name):
     # https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     api_key = agriculture.config.weather_api_key
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
-   
-    complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+    #5.349390, -4.017050
+    latitude = "29.3846"
+    longitude="70.9116"
+    #complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+    complete_url = base_url + "appid=" + api_key + "&lat=" + latitude+"&lon="+longitude
     response = requests.get(complete_url)
     x = response.json()
-
+    print(x)
     if x["cod"] != "404":
         y = x["main"]
 
@@ -115,6 +117,10 @@ def weather_fetch(city_name):
         return temperature, humidity
     else:
         return None
+
+
+
+
 
 
 def predict_image(img, model=disease_model):
@@ -465,6 +471,7 @@ def field_details_page(name, index=-1):
     for idx,multispectraindex in enumerate(field.msi_index):
 
         msi = {}
+        print(multispectraindex)
 
         msi["date"]       = multispectraindex.date
         msi["latitude"]   = multispectraindex.latitude
@@ -488,8 +495,20 @@ def field_details_page(name, index=-1):
         field_data["current_index"] = index
 
     mean_ndvi = np.average([float(el) for el in field_data["ndvi"].split(',')])
+    api_key = agriculture.config.weather_api_key
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+    latitude = "29.3846"
+    longitude="70.9116"
+    complete_url = base_url + "appid=" + api_key + "&lat=" + latitude+"&lon="+longitude
+    response = requests.get(complete_url)
+    x = response.json()
+    print(x)
+    if x["cod"] != "404":
+        weather =x
+    else:
+        weather = ""
 
-    return render_template('field_details.html', mean_ndvi=mean_ndvi, current_index=index, field_data=json.dumps(field_data), name=field.name, crop=field.crop, area=field.area, date=field_data["date"])
+    return render_template('field_details.html', mean_ndvi=mean_ndvi, weather=weather, current_index=index, field_data=json.dumps(field_data), name=field.name, crop=field.crop, area=field.area, date=field_data["date"])
 
 ################################################################################
 

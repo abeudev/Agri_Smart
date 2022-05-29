@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-   <title>Créer un nouveau champs | Agriculture</title>
+   <title>Créer un nouveau champs | Agri smart</title>
 {% endblock %}
 
 {% block content %}
@@ -21,13 +21,13 @@
                <div class="row mb-3">
                   <label for="field-name" class="col-sm-3 col-form-label">{{form.name.label}}</label>
                   <div class="col-sm-9">
-                     {{ form.name(class="form-control", placeholder="Field Name", id="field-name")}}
+                     {{ form.name(class="form-control", placeholder="Nom du champ", id="field-name")}}
                   </div>
                </div>
                <div class="row mb-3">
                   <label for="crop-type" class="col-sm-3 col-form-label">{{form.crop.label}}</label>
                   <div class="col-sm-9">
-                     {{ form.crop(class="form-select", placeholder="Field Name", id="crop-type")}}
+                     {{ form.crop(class="form-select", placeholder="Nom de la culture", id="crop-type")}}
                   </div>
                </div>
                {{ form.geometry(class="form-control", id="field-geometry")}}
@@ -42,7 +42,7 @@
             </div>
             <div class="row justify-content-center my-3">
                <div class="col-sm-5 d-grid gap-2">
-                  <button onclick="create_field_clicked()" id="create_field_btn" class="btn btn-success btn-lg btn-block" type="button" name="button">Define Field</button>
+                  <button onclick="create_field_clicked()" id="create_field_btn" class="btn btn-success btn-lg btn-block" type="button" name="button">Définir parcelle</button>
                </div>
             </div>
          </div>
